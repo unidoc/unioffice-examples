@@ -1,0 +1,4 @@
+github.com/go-ole/go-ole v1.2.4 h1:nNBDSCOigTSiarFpYE9J/KtEA1IOW4CNeqT9TQDqCxI=
+github.com/go-ole/go-ole v1.2.4/go.mod h1:XCwSNxSkXRo4vlyPy93sltvi/qJq0jqQhjqQNIwKuxM=
+github.com/unidoc/unioffice v1.4.0 h1:yl+TbZJu2GTVYAYvu51wppj0R+fPC67xzVcy91qgrzI=
+github.com/unidoc/unioffice v1.4.0/go.mod h1:7wl8btOkZW1TfqfpDWoujRXkUpowwisGRYDo7COHBiI=
