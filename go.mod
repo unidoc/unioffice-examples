@@ -1,4 +1,4 @@
-module unioffice-examples
+module github.com/unidoc/unioffice-examples
 
 go 1.12
 
