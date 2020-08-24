@@ -2,10 +2,24 @@
 package main
 
 import (
+	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/document"
 	"github.com/unidoc/unioffice/measurement"
 	"github.com/unidoc/unioffice/schema/soo/wml"
 )
+
+const licenseKey = `
+-----BEGIN UNIDOC LICENSE KEY-----
+Free trial license keys are available at: https://unidoc.io/
+-----END UNIDOC LICENSE KEY-----
+`
+
+func init() {
+	err := license.SetLicenseKey(licenseKey, `Company Name`)
+	if err != nil {
+		panic(err)
+	}
+}
 
 var lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lobortis, lectus dictum feugiat tempus, sem neque finibus enim, sed eleifend sem nunc ac diam. Vestibulum tempus sagittis elementum`
 
