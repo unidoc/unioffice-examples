@@ -6,10 +6,24 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/document"
 	ole "github.com/go-ole/go-ole"
 	"github.com/go-ole/go-ole/oleutil"
 )
+
+const licenseKey = `
+-----BEGIN UNIDOC LICENSE KEY-----
+Free trial license keys are available at: https://unidoc.io/
+-----END UNIDOC LICENSE KEY-----
+`
+
+func init() {
+	err := license.SetLicenseKey(licenseKey, `Company Name`)
+	if err != nil {
+		panic(err)
+	}
+}
 
 // NOTE: This example can only run on Windows and requires that Word be installed.
 
