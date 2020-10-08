@@ -131,13 +131,6 @@ func main() {
 		run = para.AddRun()
 		run.SetText(fmt.Sprintf("Manager: %s", data.Manager))
 
-		//for i := 1; i < 5; i++ {
-		//	para = ph.AddParagraph()
-		//	para.Properties().SetLevel(int32(i))
-		//	run = para.AddRun()
-		//	run.SetText("Level controls indentation")
-		//}
-
 		if err != nil {
 			log.Fatalf("error opening template: %s", err)
 		}
