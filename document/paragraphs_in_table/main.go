@@ -41,5 +41,15 @@ func main() {
 	tablePara3 := doc.InsertParagraphBefore(tablePara1)
 	tablePara3.AddRun().AddText("table paragraph before table paragraph 1")
 
+	tableInTable := doc.InsertTableAfter(tablePara3)
+	tableInTable.Properties().Borders().SetAll(wml.ST_BorderBasicBlackDots, color.DarkGreen, measurement.Point*2)
+	tableInTablePara := tableInTable.AddRow().AddCell().AddParagraph()
+	tableInTablePara.AddRun().AddText("table in table paragraph 1")
+
+	tableInTableInTable := doc.InsertTableBefore(tableInTablePara)
+	tableInTableInTable.Properties().Borders().SetAll(wml.ST_BorderBasicBlackDots, color.OrangeRed, measurement.Point*2)
+	tableInTableInTablePara := tableInTableInTable.AddRow().AddCell().AddParagraph()
+	tableInTableInTablePara.AddRun().AddText("table in table in table paragraph 1")
+
 	doc.SaveToFile("out.docx")
 }
