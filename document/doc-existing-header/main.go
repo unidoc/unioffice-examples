@@ -1,0 +1,54 @@
+// Copyright 2020 FoxyUtils ehf. All rights reserved.
+
+package main
+
+import (
+	"fmt"
+	"github.com/unidoc/unioffice/common/license"
+	"github.com/unidoc/unioffice/document"
+	"github.com/unidoc/unioffice/schema/soo/wml"
+)
+
+const licenseKey = `
+-----BEGIN UNIDOC LICENSE KEY-----
+Free trial license keys are available at: https://unidoc.io/
+-----END UNIDOC LICENSE KEY-----
+`
+
+func init() {
+	err := license.SetLicenseKey(licenseKey, `Company Name`)
+	if err != nil {
+		panic(err)
+	}
+}
+
+// setHeader sets the header by creating new or using existing header
+func setOrCreateHeader(doc *document.Document, text string) {
+	// Check if header with the given type exists already
+	hdr, ok := doc.BodySection().GetHeader(wml.ST_HdrFtrDefault)
+	if !ok {
+		hdr = doc.AddHeader()
+		doc.BodySection().SetHeader(hdr, wml.ST_HdrFtrDefault)
+	}
+
+	// Add Text to header
+	para := hdr.AddParagraph()
+	run := para.AddRun()
+	run.AddBreak()
+	run.AddText(text)
+}
+
+func main() {
+	doc := document.New()
+
+	// This will create a new header with text "Header 1"
+	setOrCreateHeader(doc, "Header 1")
+
+	// This will add a new text to the existing header
+	setOrCreateHeader(doc, "Header 2")
+
+	if err := doc.SaveToFile("doc-existing-header.docx"); err != nil {
+		fmt.Println(err)
+		return
+	}
+}
