@@ -48,7 +48,7 @@ func main() {
 	}
 
 	ph, _ := sld.GetPlaceholder(pml.ST_PlaceholderTypeTitle)
-	ph.SetText("Using gooxml")
+	ph.SetText("Using unioffice")
 	ph, _ = sld.GetPlaceholder(pml.ST_PlaceholderTypeBody)
 	ph.SetText("Created with github.com/unidoc/unioffice/")
 

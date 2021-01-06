@@ -1,6 +1,8 @@
 github.com/go-ole/go-ole v1.2.4 h1:nNBDSCOigTSiarFpYE9J/KtEA1IOW4CNeqT9TQDqCxI=
 github.com/go-ole/go-ole v1.2.4/go.mod h1:XCwSNxSkXRo4vlyPy93sltvi/qJq0jqQhjqQNIwKuxM=
-github.com/unidoc/unioffice v1.7.0 h1:EdNrVxdYL3HncKzpASzYOK4vl37rjH2CAWf5tAONLS0=
-github.com/unidoc/unioffice v1.7.0/go.mod h1:7wl8btOkZW1TfqfpDWoujRXkUpowwisGRYDo7COHBiI=
+github.com/unidoc/unioffice v1.4.0 h1:yl+TbZJu2GTVYAYvu51wppj0R+fPC67xzVcy91qgrzI=
+github.com/unidoc/unioffice v1.4.0/go.mod h1:7wl8btOkZW1TfqfpDWoujRXkUpowwisGRYDo7COHBiI=
 github.com/unidoc/unioffice v1.7.1 h1:CRgGwaxedZwVtkNjBTVjDin8j3IfktbKfoX1zJ57cNs=
 github.com/unidoc/unioffice v1.7.1/go.mod h1:7wl8btOkZW1TfqfpDWoujRXkUpowwisGRYDo7COHBiI=
+github.com/unidoc/unioffice v1.8.0 h1:yqWYJDzClhzAu26pC9kpHxmaropQ5khXR4TWYF4scoU=
+github.com/unidoc/unioffice v1.8.0/go.mod h1:7wl8btOkZW1TfqfpDWoujRXkUpowwisGRYDo7COHBiI=
