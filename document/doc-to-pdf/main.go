@@ -38,6 +38,7 @@ func init() {
 }
 
 var filenames = []string{
+	"chart",
 	"headers_footers",
 	"image_square",
 	"table",
