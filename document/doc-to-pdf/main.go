@@ -50,7 +50,7 @@ var filenames = []string{
 
 func main() {
 	for _, filename := range filenames {
-		outputPath := filename + ".pdf"
+		outputPath := fmt.Sprintf("output/%s.pdf", filename)
 		doc, err := document.Open(filename + ".docx")
 		if err != nil {
 			log.Fatalf("error opening document: %s", err)
