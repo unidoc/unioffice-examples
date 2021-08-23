@@ -3,9 +3,21 @@ package main
 
 import (
 	"fmt"
+	"os"
+
+	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/document"
 	"github.com/unidoc/unioffice/measurement"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	doc, err := document.Open("document.docx")
@@ -40,8 +52,8 @@ func main() {
 			}
 		}
 		if drawingInfo := e.DrawingInfo; drawingInfo != nil {
-			fmt.Println("Height in mm:", measurement.FromEMU(drawingInfo.Height) / measurement.Millimeter)
-			fmt.Println("Width in mm:", measurement.FromEMU(drawingInfo.Width) / measurement.Millimeter)
+			fmt.Println("Height in mm:", measurement.FromEMU(drawingInfo.Height)/measurement.Millimeter)
+			fmt.Println("Width in mm:", measurement.FromEMU(drawingInfo.Width)/measurement.Millimeter)
 		}
 		fmt.Println("--------")
 	}

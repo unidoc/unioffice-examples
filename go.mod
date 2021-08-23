@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	github.com/go-ole/go-ole v1.2.5
-	github.com/unidoc/unioffice v1.13.0
-	github.com/unidoc/unipdf/v3 v3.25.0
-	golang.org/x/sys v0.0.0-20210414055047-fe65e336abe0 // indirect
+	github.com/unidoc/unioffice v1.14.0
+	github.com/unidoc/unipdf/v3 v3.28.0
+	golang.org/x/sys v0.0.0-20210823070655-63515b42dcdf // indirect
 )

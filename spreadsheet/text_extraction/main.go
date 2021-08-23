@@ -9,9 +9,20 @@ package main
 
 import (
 	"fmt"
+	"os"
 
+	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/spreadsheet"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	wb, err := spreadsheet.Open("extract_styles.xlsx")
@@ -32,7 +43,7 @@ func main() {
 
 	for ri := 0; ri < 4; ri++ {
 		for ci := 0; ci < 4; ci++ {
-			i := ri * 4 + ci
+			i := ri*4 + ci
 			fmt.Printf("\nRow: %d, Column: %d\n", ri, ci)
 			cell := sheetCells[i]
 			cellX := cell.Cell.X()
