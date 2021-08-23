@@ -3,20 +3,17 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/measurement"
 	"github.com/unidoc/unioffice/presentation"
 )
 
-const licenseKey = `
------BEGIN UNIDOC LICENSE KEY-----
-Free trial license keys are available at: https://unidoc.io/
------END UNIDOC LICENSE KEY-----
-`
-
 func init() {
-	err := license.SetLicenseKey(licenseKey, `Company Name`)
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
 	if err != nil {
 		panic(err)
 	}
@@ -42,9 +39,9 @@ func main() {
 	}
 
 	// Editing the existing text box
-	tb := tbs[0] // taking first of them
+	tb := tbs[0]                              // taking first of them
 	run := tb.X().TxBody.P[0].EG_TextRun[0].R // taking the first run of the first paragraph
-	run.T = "Edited TextBox text" // changing the text of the run
+	run.T = "Edited TextBox text"             // changing the text of the run
 
 	// creating a new text box
 	newTb := slide.AddTextBox()
