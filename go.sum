@@ -34,8 +34,8 @@ github.com/unidoc/pkcs7 v0.0.0-20200411230602-d883fd70d1df h1:1RV3lxQ6L6xGFNhngp
 github.com/unidoc/pkcs7 v0.0.0-20200411230602-d883fd70d1df/go.mod h1:UEzOZUEpJfDpywVJMUT8QiugqEZC29pDq7kdIZhWCr8=
 github.com/unidoc/timestamp v0.0.0-20200412005513-91597fd3793a h1:RLtvUhe4DsUDl66m7MJ8OqBjq8jpWBXPK6/RKtqeTkc=
 github.com/unidoc/timestamp v0.0.0-20200412005513-91597fd3793a/go.mod h1:j+qMWZVpZFTvDey3zxUkSgPJZEX33tDgU/QIA0IzCUw=
-github.com/unidoc/unioffice v1.14.0 h1:rzDlgznRdE5uCzmeuXOEO/kMXMRMGVeKN1hHUg8Ep4c=
-github.com/unidoc/unioffice v1.14.0/go.mod h1:GNSDPZRcSSMRSiZWVJNWH22nFv705ppUQLa1pfbgAAk=
+github.com/unidoc/unioffice v1.15.0 h1:pMEL9pXap4Ew+KJj6iP1pyE9VH33PcYYLRlZ9KQC3FI=
+github.com/unidoc/unioffice v1.15.0/go.mod h1:GNSDPZRcSSMRSiZWVJNWH22nFv705ppUQLa1pfbgAAk=
 github.com/unidoc/unipdf/v3 v3.28.0 h1:flSCHcrfPHbxaSMltbUqk2Kd+2CsYWOiItj8XqRQc4o=
 github.com/unidoc/unipdf/v3 v3.28.0/go.mod h1:WdRz3hVhi/M0jFGXhsT5/9FDyRfga6KgI2ZQqjiOXaM=
 github.com/unidoc/unitype v0.2.1 h1:x0jMn7pB/tNrjEVjy3Ukpxo++HOBQaTCXcTYFA6BH3w=
