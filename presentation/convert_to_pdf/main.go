@@ -40,6 +40,7 @@ func init() {
 
 var filenames = []string{
 	"chart",
+	"lists",
 	"picture",
 	"several_slides",
 	"table",
