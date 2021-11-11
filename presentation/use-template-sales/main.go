@@ -12,21 +12,6 @@ import (
 	"github.com/unidoc/unioffice/presentation"
 )
 
-const licenseKey = `
------BEGIN UNIDOC LICENSE KEY-----
-eyJsaWNlbnNlX2lkIjoiNTRlNTE4MmItNGFlMS00YTQ2LTQxZTUtZDRmNGM4ZDEwM2U1IiwiY3VzdG9tZXJfaWQiOiJhYTkyZjI3Mi1kYTM4LTRiY2MtNmM1ZC1kZjAwZmI5ODQ0ODEiLCJjdXN0b21lcl9uYW1lIjoiZGFuaXNoIiwiY3VzdG9tZXJfZW1haWwiOiJkYW5pc2hAdW5pZG9jLmlvIiwidGllciI6ImJ1c2luZXNzIiwiY3JlYXRlZF9hdCI6MTYwMTY0MzI2MCwiZXhwaXJlc19hdCI6MTYzMzIxOTE5OSwiY3JlYXRvcl9uYW1lIjoiVW5pRG9jIFN1cHBvcnQiLCJjcmVhdG9yX2VtYWlsIjoic3VwcG9ydEB1bmlkb2MuaW8iLCJ1bmlwZGYiOnRydWUsInVuaW9mZmljZSI6dHJ1ZSwidHJpYWwiOmZhbHNlfQ==
-+
-Cyipjn8hCDzPZBp2DOyWpez1QGk4SnS5PL+Voy58NJze1ywj+LxgSrKi6u2M2tTh0mbTvM4hAPq+/6M0mxDWS54bDwOWY0kbmJiSv7SoILaJqrhJod+fuVfCyskTF+C5BV+y4z/X7EvadTwEFpR8yRLibsAmFWjGTXvs3Tk+mgHFonU/u+PIaUy7Lmon5dPuREHXJmZiiOUXeEan/iQv+WWckk1VNVAY0U0y/gO/eeDAptyagpsCRNDQlfwlp8dMZGUCECwSofg7I01bfwGKxOcM0HOdu288Tzxs6cOgB7+jqoUGaMRfuq19n5ytvBgpfx4dTI+f70PEw7uVGFwqmw==
------END UNIDOC LICENSE KEY-----
-`
-
-func init() {
-	err := license.SetLicenseKey(licenseKey, `danish`)
-	if err != nil {
-		panic(err)
-	}
-}
-
 type SaleInfo struct {
 	Area      string
 	Sale      string
