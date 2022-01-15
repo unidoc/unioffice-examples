@@ -37,32 +37,23 @@ func init() {
 	}
 }
 
-var filenames = []string{
-	"chart",
-	"fld_simple",
-	"headers_footers",
-	"image_square",
-	"merge_fields",
-	"table",
-	"text_only_portrait",
-	"text_only_landscape",
-	"textbox_anchor",
-	"textbox_inline",
-}
-
 func main() {
-	for _, filename := range filenames {
-		outputPath := fmt.Sprintf("output/%s.pdf", filename)
-		doc, err := document.Open(filename + ".docx")
-		if err != nil {
-			log.Fatalf("error opening document: %s", err)
-		}
-		defer doc.Close()
-		c := convert.ConvertToPdf(doc)
+	doc, err := document.Open("merge_fields.docx")
+	if err != nil {
+		log.Fatalf("error opening document: %s", err)
+	}
+	defer doc.Close()
 
-		err = c.WriteToFile(outputPath)
-		if err != nil {
-			log.Fatalf("error converting document: %s", err)
-		}
+	// Set convert options for ProcessFields to true.
+	co := &convert.Options{
+		ProcessFields: true,
+	}
+
+	// Convert to PDF and process the fields in document.
+	c := convert.ConvertToPdfWithOptions(doc, co)
+
+	err = c.WriteToFile("output/merge_fields.pdf")
+	if err != nil {
+		log.Fatalf("error converting document: %s", err)
 	}
 }
