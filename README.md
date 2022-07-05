@@ -36,10 +36,13 @@ on outbound connections due to firewalls and/or compliance requirements.
 The metered license is the most convenient way to get started with UniDoc products and the Free tier enables a powerful way to get started for free.
 Anyone can get a free metered API key by signing up on http://cloud.unidoc.io/
 
+> Metered License (API keys) requires read-write permission to $HOME directory for storing API Keys usage,
+> however you can set `HOME` environment to another directory if you wish.
+
 ## Examples
 
-- [license/metered/main.go](unioffice_license_loading_metered.go) Demonstrates how to load the Metered API license key and how to print out relevant information.
-- [license/offline/main.go](unioffice_license_loading_offline.go) Demonstrates how to print out information about the license after loading an offline license key.
+- [license/metered/main.go](license/metered/main.go) Demonstrates how to load the Metered API license key and how to print out relevant information.
+- [license/offline/main.go](license/offline/main.go) Demonstrates how to print out information about the license after loading an offline license key.
 
 ### Build all examples
 
