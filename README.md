@@ -36,12 +36,10 @@ on outbound connections due to firewalls and/or compliance requirements.
 The metered license is the most convenient way to get started with UniDoc products and the Free tier enables a powerful way to get started for free.
 Anyone can get a free metered API key by signing up on http://cloud.unidoc.io/
 
-> Metered License (API keys) requires read-write permission to $HOME directory for storing API Keys usage,
-> however you can set `HOME` environment to another directory if you wish.
-
 ## Examples
 
 - [license/metered/main.go](license/metered/main.go) Demonstrates how to load the Metered API license key and how to print out relevant information.
+- [license/metered-non-persistent-cache/main.go](license/metered-non-persistent-cache/main.go) Demonstrates how to load the Metered API license key for instances that not having persistent storage for usages cache and print out relevant information. When working with short-lived containers like docker or kubernetes instances usually it's doesn't have persistent storage location and will be destroyed after being idle.
 - [license/offline/main.go](license/offline/main.go) Demonstrates how to print out information about the license after loading an offline license key.
 
 ### Build all examples
