@@ -8,5 +8,3 @@ require (
 	github.com/unidoc/unioffice v1.20.0
 	github.com/unidoc/unipdf/v3 v3.37.0
 )
-
-replace github.com/unidoc/unioffice => ../
