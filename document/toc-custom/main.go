@@ -1,4 +1,4 @@
-// Copyright 2017 FoxyUtils ehf. All rights reserved.
+// Copyright 2024 FoxyUtils ehf. All rights reserved.
 package main
 
 import (
@@ -28,8 +28,13 @@ func main() {
 	// Force the TOC to update upon opening the document
 	doc.Settings.SetUpdateFieldsOnOpen(true)
 
-	// Add a TOC
-	doc.AddParagraph().AddRun().AddTOC(nil)
+	// Add options for TOC to use hyperlinks and generate lines only for heading level 1
+	options := &document.TOCOptions{
+		UseHyperlinks: true,
+		HeadingLevel:  "1-1",
+	}
+	// Add a custom TOC
+	doc.AddParagraph().AddRun().AddTOC(options)
 	// followed by a page break
 	doc.AddParagraph().Properties().AddSection(wml.ST_SectionMarkNextPage)
 
