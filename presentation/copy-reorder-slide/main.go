@@ -22,7 +22,7 @@ func main() {
 	// Open presentation from which we will copy slide
 	pptFrom, err := presentation.Open("source.pptx")
 	if err != nil {
-		fmt.Println("presentation.Open err ", err)
+		fmt.Println("presentation.Open error ", err)
 		os.Exit(1)
 	}
 	defer pptFrom.Close()
@@ -30,7 +30,7 @@ func main() {
 	// Open presentation from which we will copy slide
 	pptTo, err := presentation.Open("extract.pptx")
 	if err != nil {
-		fmt.Println("presentation.Open err ", err)
+		fmt.Println("presentation.Open error ", err)
 		os.Exit(1)
 	}
 	defer pptTo.Close()
