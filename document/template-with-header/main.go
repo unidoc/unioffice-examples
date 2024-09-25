@@ -31,7 +31,7 @@ type letter struct {
 }
 
 func main() {
-	letters, err := loadMessage("./data/letters.json")
+	letters, err := loadLetters("./data/letters.json")
 	if err != nil {
 		panic(err)
 	}
@@ -41,7 +41,8 @@ func main() {
 	}
 }
 
-func loadMessage(dataPath string) ([]letter, error) {
+// loadLetters loads the list of letters from json file
+func loadLetters(dataPath string) ([]letter, error) {
 	// Open the JSON file
 	jsonFile, err := os.Open(dataPath)
 	if err != nil {
