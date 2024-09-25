@@ -43,7 +43,7 @@ func main() {
 	}
 
 	for _, letter := range letters {
-		generateDoc("Sample_Company_Letter.docx", letter, fmt.Sprintf("letter_to_%s.docx", letter.Receiver))
+		generateDoc("letter_template.docx", letter, fmt.Sprintf("./output/letter_to_%s.docx", letter.Receiver))
 	}
 
 }
@@ -76,16 +76,16 @@ func loadMessage(dataPath string) ([]Letter, error) {
 }
 
 func generateDoc(templatePath string, letter Letter, outputName string) error {
-	// When Word saves a document, it removes all unused styles.  This means to
-	// copy the styles from an existing document, you must first create a
-	// document that contains text in each style of interest.  As an example,
-	// see the template.docx in this directory.  It contains a paragraph set in
-	// each style that Word supports by default.
 	templateDoc, err := document.OpenTemplate(templatePath)
 	if err != nil {
 		log.Fatalf("error opening Windows Word 2016 document: %s", err)
 	}
 	defer templateDoc.Close()
+
+	// We can confirm the existence of the styles by printing them one by one
+	// for _, s := range templateDoc.Styles.Styles() {
+	// 	fmt.Println("style", s.Name(), "has ID of", s.StyleID(), "type is", s.Type())
+	// }
 
 	// set header of the document
 	if len(templateDoc.Headers()) > 0 {
@@ -96,14 +96,12 @@ func generateDoc(templatePath string, letter Letter, outputName string) error {
 		run.AddBreak()
 	}
 
-	// And create documents setting their style to the style ID (not style name).
-
 	t := time.Now()
 	dateTime := t.Format("January 2, 2006")
 
 	// take the formatting from the template for date time text
 	para := templateDoc.AddParagraph()
-	para.SetStyle("Normal") // style name taken from the doc.Styles.Styles()
+	para.SetStyle("Normal") // style name taken from the doc.Styles.Styles() list
 	para.AddRun().AddText(dateTime)
 	run := para.AddRun()
 	run.AddBreak()
@@ -112,8 +110,6 @@ func generateDoc(templatePath string, letter Letter, outputName string) error {
 	para = templateDoc.AddParagraph()
 	para.SetStyle("Normal") // style name taken from the doc.Styles.Styles()
 	para.AddRun().AddText(intro)
-	run = para.AddRun()
-	run.AddBreak()
 
 	for _, par := range letter.Paragraphs {
 		para = templateDoc.AddParagraph()
