@@ -65,7 +65,6 @@ func loadMessage(dataPath string) ([]letter, error) {
 	}
 
 	return letters, nil
-
 }
 
 // generateDoc creates a docx file using the template provided by `templatePath` and writes it to `outputName`.
