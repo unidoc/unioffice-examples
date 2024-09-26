@@ -1,4 +1,4 @@
-// Copyright 2017 FoxyUtils ehf. All rights reserved.
+// Copyright 2024 FoxyUtils ehf. All rights reserved.
 
 package main
 
@@ -33,11 +33,15 @@ type letter struct {
 func main() {
 	letters, err := loadLetters("./data/letters.json")
 	if err != nil {
-		panic(err)
+		log.Printf("error opening json file %s", err)
+		return
 	}
 
 	for _, letter := range letters {
-		generateDoc("letter_template.docx", letter, fmt.Sprintf("./output/letter_to_%s.docx", letter.Receiver))
+		err := generateDoc("letter_template.docx", letter, fmt.Sprintf("./output/letter_to_%s.docx", letter.Receiver))
+		if err != nil {
+			fmt.Printf("failed to generate doc for letter to %s", letter.Receiver)
+		}
 	}
 }
 
@@ -72,14 +76,17 @@ func loadLetters(dataPath string) ([]letter, error) {
 func generateDoc(templatePath string, l letter, outputName string) error {
 	templateDoc, err := document.OpenTemplate(templatePath)
 	if err != nil {
-		log.Fatalf("error opening Windows Word 2016 document: %s", err)
+		return fmt.Errorf("error opening template file : %s", err)
 	}
 	defer templateDoc.Close()
 
-	// We can confirm the existence of the styles by printing them one by one
-	// for _, s := range templateDoc.Styles.Styles() {
-	// 	fmt.Println("style", s.Name(), "has ID of", s.StyleID(), "type is", s.Type())
-	// }
+	var Normal string // style for the body of the letter
+	for _, s := range templateDoc.Styles.Styles() {
+		// fmt.Println("style", s.Name(), "has ID of", s.StyleID(), "type is", s.Type())
+		if s.Name() == "Normal" {
+			Normal = s.Name()
+		}
+	}
 
 	// set header of the document if it exists.
 	if len(templateDoc.Headers()) > 0 {
@@ -95,31 +102,24 @@ func generateDoc(templatePath string, l letter, outputName string) error {
 
 	// take the formatting from the template for date time text
 	para := templateDoc.AddParagraph()
-	para.SetStyle("Normal") // style name taken from the doc.Styles.Styles() list
+	para.SetStyle(Normal) // style name taken from the doc.Styles.Styles() list
 	para.AddRun().AddText(dateTime)
-	run := para.AddRun()
-	run.AddBreak()
 
 	intro := fmt.Sprintf("Dear %s,", l.Receiver)
 	para = templateDoc.AddParagraph()
-	para.SetStyle("Normal") // style name taken from the doc.Styles.Styles()
+	para.SetStyle(Normal) // style name taken from the doc.Styles.Styles()
 	para.AddRun().AddText(intro)
 
 	for _, par := range l.Paragraphs {
 		para = templateDoc.AddParagraph()
-		para.SetStyle("Normal") // style name taken from the doc.Styles.Styles()
+		para.SetStyle(Normal) // style name taken from the doc.Styles.Styles()
 		para.AddRun().AddText(par)
-		run = para.AddRun()
-		run.AddBreak()
 	}
 
 	// set footer if it exists.
 	if len(templateDoc.Footers()) > 0 {
 		f := templateDoc.Footers()[0]
 		templateDoc.BodySection().SetFooter(f, wml.ST_HdrFtrDefault)
-		para = f.AddParagraph()
-		run := para.AddRun()
-		run.AddBreak()
 	}
 
 	err = templateDoc.SaveToFile(outputName)
