@@ -1,5 +1,6 @@
 /*
- * This example showcases PDF generation from docx document with UniOffice package.
+ * This example showcases how to see license usage logs
+ * in docx to PDF conversing with UniOffice.
  */
 
 package main

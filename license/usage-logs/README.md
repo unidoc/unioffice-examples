@@ -11,6 +11,6 @@ license.SetMeteredKeyUsageLogVerboseMode(true)
 Sample output 
 ![alt text](sample_output.png)
 #### Examples 
-- [Usage Logs for Docs to PDF Conversion](main.go) This example shows how to display license usage logs for docs to pdf conversion process.
+- [Usage Logs for Docx to PDF Conversion](main.go) This example shows how to display license usage logs for docx to pdf conversion process.
 
 
