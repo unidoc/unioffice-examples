@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/go-ole/go-ole v1.3.0
-	github.com/unidoc/unioffice v1.35.0
-	github.com/unidoc/unipdf/v3 v3.55.0
+	github.com/unidoc/unioffice v1.36.0
+	github.com/unidoc/unipdf/v3 v3.62.0
 )
 
 require (
@@ -14,6 +14,7 @@ require (
 	github.com/adrg/xdg v0.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
+	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/gorilla/i18n v0.0.0-20150820051429-8b358169da46 // indirect
 	github.com/llgcode/draw2d v0.0.0-20231212091825-f55e0c776b44 // indirect
