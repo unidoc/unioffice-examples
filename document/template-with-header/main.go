@@ -80,11 +80,12 @@ func generateDoc(templatePath string, l letter, outputName string) error {
 	}
 	defer templateDoc.Close()
 
-	var Normal string // style for the body of the letter
+	var styleNormal string
+
+	// look for style with the name "Normal" from template document styles.
 	for _, s := range templateDoc.Styles.Styles() {
-		// fmt.Println("style", s.Name(), "has ID of", s.StyleID(), "type is", s.Type())
 		if s.Name() == "Normal" {
-			Normal = s.Name()
+			styleNormal = s.Name()
 		}
 	}
 
@@ -102,17 +103,17 @@ func generateDoc(templatePath string, l letter, outputName string) error {
 
 	// take the formatting from the template for date time text
 	para := templateDoc.AddParagraph()
-	para.SetStyle(Normal) // style name taken from the doc.Styles.Styles() list
+	para.SetStyle(styleNormal)
 	para.AddRun().AddText(dateTime)
 
 	intro := fmt.Sprintf("Dear %s,", l.Receiver)
 	para = templateDoc.AddParagraph()
-	para.SetStyle(Normal) // style name taken from the doc.Styles.Styles()
+	para.SetStyle(styleNormal)
 	para.AddRun().AddText(intro)
 
 	for _, par := range l.Paragraphs {
 		para = templateDoc.AddParagraph()
-		para.SetStyle(Normal) // style name taken from the doc.Styles.Styles()
+		para.SetStyle(styleNormal)
 		para.AddRun().AddText(par)
 	}
 
