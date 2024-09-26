@@ -12,10 +12,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/unidoc/unipdf/v3/common"
 	unipdflicense "github.com/unidoc/unipdf/v3/common/license"
 
 	"github.com/unidoc/unioffice/common/license"
+	"github.com/unidoc/unioffice/common/logger"
 	"github.com/unidoc/unioffice/document"
 	"github.com/unidoc/unioffice/document/convert"
 )
@@ -41,11 +41,10 @@ func init() {
 	}
 
 	// Set the log level to info or higher
-	common.SetLogger(common.NewConsoleLogger(common.LogLevelInfo))
+	logger.SetLogger(logger.NewConsoleLogger(logger.LogLevelInfo))
+
 	// Enable the verbose mode logging
 	license.SetMeteredKeyUsageLogVerboseMode(true)
-	license.SetMeteredKeyPersistentCache(false)
-
 }
 
 func main() {
@@ -55,21 +54,22 @@ func main() {
 	}
 
 	inputDir := os.Args[1]
-
+	output_dir := os.Args[2]
 	files, err := filepath.Glob(inputDir + "*.docx")
 	if err != nil {
-		panic(err)
+		log.Fatalf("failed to get files from directory %s %s", inputDir, err)
 	}
 
 	for _, filePath := range files {
 		base := path.Base(filePath)
 		name := strings.TrimSuffix(base, filepath.Ext(base))
-		outputPath := fmt.Sprintf("output/%s.pdf", name)
-		doc, err := document.Open(filePath + ".docx")
+		outputPath := fmt.Sprintf("%s/%s.pdf", output_dir, name)
+		doc, err := document.Open(filePath)
 		if err != nil {
 			log.Fatalf("error opening document: %s", err)
 		}
 		defer doc.Close()
+
 		c := convert.ConvertToPdf(doc)
 
 		err = c.WriteToFile(outputPath)
