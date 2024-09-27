@@ -20,7 +20,7 @@ func init() {
 	// Set the log level to info or higher
 	logger.SetLogger(logger.NewConsoleLogger(logger.LogLevelInfo))
 
-	// Enable the verbose mode logging
+	// Enable the verbose mode usage logging to log the usage info.
 	license.SetMeteredKeyUsageLogVerboseMode(true)
 }
 

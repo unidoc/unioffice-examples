@@ -1,5 +1,5 @@
 ### Metered License Key Usage Logs
-When using unioffice on metered api key it is possible to see the usage logs of license key in every run. To enable this behavior all we have to do is setting the `UsageLog` to verbose and the log level to `Info` or above as follows. This is available for metered api key only.
+When using unioffice on metered api key it is possible to see the usage logs of license key in every run. To enable this set the `license.SetMeteredKeyUsageLogVerboseMode` to `true` and to print out into console set the `logger.SetLogger` to Info or higher. as follows. This is available for metered api key only.
 
 ```go
 // Set the log level to info or higher
