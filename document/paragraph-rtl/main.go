@@ -1,4 +1,5 @@
-// Copyright 2022 FoxyUtils ehf. All rights reserved.
+// Copyright UniDoc ehf. All rights reserved.
+// This example show how's to set the paragraph run properties for Right to Left text.
 package main
 
 import (
