@@ -1,4 +1,4 @@
-// Copyright UniDoc ehf. All rights reserved.
+// Copyright 2024 UniDoc ehf. All rights reserved.
 package main
 
 import (
@@ -25,7 +25,7 @@ func init() {
 func main() {
 	ppt, err := presentation.Open("placeholder.pptx")
 	if err != nil {
-		panic(err)
+		log.Fatalf("Unable to open file: %v", err)
 	}
 	defer ppt.Close()
 
@@ -73,11 +73,13 @@ func main() {
 				// Remove placeholder after the table being added.
 				err := ph.Remove()
 				if err != nil {
-					log.Fatal(err)
+					log.Fatalf("error on removing placeholder: %v", err)
 				}
 			}
 		}
 	}
 
-	ppt.SaveToFile("result.pptx")
+	if err := ppt.SaveToFile("result.pptx"); err != nil {
+		log.Fatalf("error saving file: %s", err)
+	}
 }
