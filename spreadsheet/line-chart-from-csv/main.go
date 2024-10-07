@@ -54,7 +54,7 @@ func main() {
 	for r := 1; r < len(dateSlice); r++ {
 		km, err := strconv.Atoi(kmSlice[r])
 		if err != nil {
-			panic(err)
+			log.Fatalf("unable to convert data into integer: %v", err)
 		}
 
 		row := sheet.AddRow()
