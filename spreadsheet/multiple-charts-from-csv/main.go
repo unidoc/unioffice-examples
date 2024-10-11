@@ -1,4 +1,4 @@
-// Copyright 2017 FoxyUtils ehf. All rights reserved.
+// Copyright 2024 FoxyUtils ehf. All rights reserved.
 package main
 
 import (
@@ -8,16 +8,18 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/labstack/gommon/log"
 	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/spreadsheet"
 )
 
 func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
 	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Successfully set the Unidoc License Key")
 }
 
 type SalesData struct {
@@ -29,9 +31,10 @@ type SalesData struct {
 
 func main() {
 	filePath := "./data/test-data.csv"
-	data, header, err := load_csv(filePath)
+	data, header, err := loadCsv(filePath)
 	if err != nil {
-		panic("failed to load data ")
+		log.Printf("failed to load data %s", err)
+		return
 	}
 
 	ss := spreadsheet.New()
@@ -71,7 +74,7 @@ func main() {
 
 	// Create Line Chart showing daily sales.
 	chart, anc := drawing.AddChart(spreadsheet.AnchorTypeTwoCell)
-	// Set width to 8 cells
+	// Set width to 10 cells
 	anc.SetWidthCells(10)
 	anc.MoveTo(7, 1)
 
@@ -126,6 +129,7 @@ func main() {
 
 	ca.SetCrosses(va)
 	va.SetCrosses(ca)
+
 	// add a title and legend
 	title2 := chart2.AddTitle()
 	title2.SetText("Daily Sales Per Person")
@@ -155,8 +159,9 @@ func main() {
 
 }
 
-func load_csv(filePath string) ([]SalesData, []string, error) {
-	file, err := os.Open(filePath) // Ensure the filename matches your CSV file
+// loadCsv loads data from csv file provided by `filePath`.
+func loadCsv(filePath string) ([]SalesData, []string, error) {
+	file, err := os.Open(filePath)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -198,7 +203,7 @@ func load_csv(filePath string) ([]SalesData, []string, error) {
 			return nil, nil, fmt.Errorf("error parsing sale price: %v", err)
 		}
 
-		// Create a new Sale object and populate it
+		// Create a new SaleData object and populate it
 		sale := SalesData{
 			DateOfSale:      dateOfSale,
 			QuantitySold:    quantitySold,
