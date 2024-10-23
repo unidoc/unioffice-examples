@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/go-ole/go-ole v1.3.0
-	github.com/unidoc/unioffice v1.36.0
+	github.com/unidoc/unioffice v1.37.0
 	github.com/unidoc/unipdf/v3 v3.62.0
 )
 

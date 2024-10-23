@@ -61,6 +61,8 @@ github.com/unidoc/unichart v0.3.0 h1:VX1j5yzhjrR3f2flC03Yat6/WF3h7Z+DLEvJLoTGhoc
 github.com/unidoc/unichart v0.3.0/go.mod h1:8JnLNKSOl8yQt1jXewNgYFHhFm5M6/ZiaydncFDpakA=
 github.com/unidoc/unioffice v1.36.0 h1:9kEUK3hQhVAB7g3lROsvCrSMZsxSwFmC1UiMox7RohQ=
 github.com/unidoc/unioffice v1.36.0/go.mod h1:VL/S9i/xd2zYqZCUzO6CFPr3kM4iKj/tLcEcthAilgU=
+github.com/unidoc/unioffice v1.37.0 h1:dQLm0UEhIYiRPkxWCGsDYZQAcSXv4oMIUknTPNKizvA=
+github.com/unidoc/unioffice v1.37.0/go.mod h1:VL/S9i/xd2zYqZCUzO6CFPr3kM4iKj/tLcEcthAilgU=
 github.com/unidoc/unipdf/v3 v3.62.0 h1:CVsxq6k1SSIrprotlFvq6iBhA+5745dWaApB0LKtGcc=
 github.com/unidoc/unipdf/v3 v3.62.0/go.mod h1:0OIzSHHno23Y8WzaK+852abK8d3AxUZ1GQkMqpyCzu8=
 github.com/unidoc/unitype v0.4.0 h1:/TMZ3wgwfWWX64mU5x2O9no9UmoBqYCB089LYYqHyQQ=
