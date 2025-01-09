@@ -4,11 +4,11 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"time"
 
-	"github.com/labstack/gommon/log"
 	"github.com/unidoc/unioffice/common/license"
 	"github.com/unidoc/unioffice/spreadsheet"
 )
