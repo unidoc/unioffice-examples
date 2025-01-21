@@ -1,4 +1,6 @@
 /*
+ * Copyright 2025 FoxyUtils ehf. All rights reserved.
+ *
  * This example showcases how to add comment to paragraph in document file.
  */
 

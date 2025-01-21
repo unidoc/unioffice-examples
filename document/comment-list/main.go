@@ -1,4 +1,6 @@
 /*
+ * Copyright 2025 FoxyUtils ehf. All rights reserved.
+ *
  * This example demonstrates how to retrieve and display comments stored within a DOCX file.
  */
 
