@@ -4,10 +4,10 @@ package main
 import (
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/document"
-	"github.com/unidoc/unioffice/measurement"
-	"github.com/unidoc/unioffice/schema/soo/wml"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/document"
+	"github.com/unidoc/unioffice/v2/measurement"
+	"github.com/unidoc/unioffice/v2/schema/soo/wml"
 )
 
 func init() {
@@ -29,7 +29,7 @@ func main() {
 	doc.Settings.SetUpdateFieldsOnOpen(true)
 
 	// Add a TOC
-	doc.AddParagraph().AddRun().AddTOC(nil)
+	doc.AddParagraph().AddRun().AddField(document.FieldTOC)
 	// followed by a page break
 	doc.AddParagraph().Properties().AddSection(wml.ST_SectionMarkNextPage)
 

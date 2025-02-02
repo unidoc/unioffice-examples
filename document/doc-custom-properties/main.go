@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/document"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/document"
 )
 
 func init() {
@@ -31,15 +31,15 @@ func main() {
 	cp := doc.GetOrCreateCustomProperties()
 
 	// You can read properties from the document
-	fmt.Println("AppVersion", *cp.GetPropertyByName("AppVersion").X().Lpwstr)
-	fmt.Println("Company", *cp.GetPropertyByName("Company").X().Lpwstr)
-	fmt.Println("DocSecurity", *cp.GetPropertyByName("DocSecurity").X().I4)
-	fmt.Println("LinksUpToDate", *cp.GetPropertyByName("LinksUpToDate").X().Bool)
+	fmt.Println("AppVersion", *cp.GetPropertyByName("AppVersion").X().PropertyChoice.Lpwstr)
+	fmt.Println("Company", *cp.GetPropertyByName("Company").X().PropertyChoice.Lpwstr)
+	fmt.Println("DocSecurity", *cp.GetPropertyByName("DocSecurity").X().PropertyChoice.I4)
+	fmt.Println("LinksUpToDate", *cp.GetPropertyByName("LinksUpToDate").X().PropertyChoice.Bool)
 	fmt.Println("Non-existent", cp.GetPropertyByName("nonexistentproperty"))
 
 	// And change them as well
 	cp.SetPropertyAsLpwstr("Company", "Another company") // text, existing property
-	fmt.Println("Company", *cp.GetPropertyByName("Company").X().Lpwstr)
+	fmt.Println("Company", *cp.GetPropertyByName("Company").X().PropertyChoice.Lpwstr)
 
 	// Adding new properties
 	cp.SetPropertyAsLpwstr("Another text property", "My text value") // text

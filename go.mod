@@ -1,12 +1,12 @@
 module github.com/unidoc/unioffice-examples
 
-go 1.18
+go 1.19
 
 require (
 	github.com/disintegration/imaging v1.6.2
 	github.com/go-ole/go-ole v1.3.0
 	github.com/unidoc/unichart v0.3.0
-	github.com/unidoc/unioffice v1.39.0
+	github.com/unidoc/unioffice/v2 v2.0.0
 	github.com/unidoc/unipdf/v3 v3.66.0
 )
 

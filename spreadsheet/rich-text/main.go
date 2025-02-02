@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/unidoc/unioffice/color"
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/spreadsheet"
+	"github.com/unidoc/unioffice/v2/color"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/spreadsheet"
 )
 
 func init() {
@@ -32,7 +32,7 @@ func main() {
 		// and cells
 		for c := 0; c < 5; c++ {
 			cell := row.AddCell()
-			//cell.SetString(fmt.Sprintf("row %d cell %d", r, c))
+			// cell.SetString(fmt.Sprintf("row %d cell %d", r, c))
 			rt := cell.SetRichTextString()
 			run := rt.AddRun()
 			run.SetText(fmt.Sprintf("row %d ", r))
