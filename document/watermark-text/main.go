@@ -33,10 +33,21 @@ func main() {
 	watermark := doc.AddWatermarkText("TEST")
 
 	// Change style of watermark text.
-	// Currently having 2 function,
-	// SetTextStyleBold and SetTextStyleItalic.
 	watermark.SetTextStyleBold(true)
 	watermark.SetTextStyleItalic(false)
+
+	// Change font of watermark text.
+	watermark.SetFontFamily("Arial")
+	watermark.SetFontSize(20)
+
+	// Change color of watermark text.
+	watermark.SetColor("red")
+
+	// Change opacity of watermark text.
+	watermark.SetOpacity(0.3)
+
+	// Change layout to diagonal, by default watermark is horizontal.
+	watermark.EnableDiagonalLayout(true)
 
 	doc.SaveToFile("watermark-text.docx")
 }
