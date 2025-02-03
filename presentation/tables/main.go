@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/measurement"
-	"github.com/unidoc/unioffice/presentation"
-	"github.com/unidoc/unioffice/schema/soo/dml"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/measurement"
+	"github.com/unidoc/unioffice/v2/presentation"
+	"github.com/unidoc/unioffice/v2/schema/soo/dml"
 )
 
 func init() {
@@ -41,18 +41,18 @@ func main() {
 
 			egtr := dml.NewEG_TextRun()
 			para.EG_TextRun = append(para.EG_TextRun, egtr)
-			egtr.R = dml.NewCT_RegularTextRun()
-			egtr.R.T = fmt.Sprintf("Cell %d:%d", ri, ci)
+			egtr.TextRunChoice.R = dml.NewCT_RegularTextRun()
+			egtr.TextRunChoice.R.T = fmt.Sprintf("Cell %d:%d", ri, ci)
 		}
 	}
 
 	style := dml.NewCT_TableStyle()
 	style.WholeTbl = dml.NewCT_TablePartStyle()
 	tcStyle := dml.NewCT_TableStyleCellStyle()
-	tcStyle.Fill = dml.NewCT_FillProperties()
-	tcStyle.Fill.SolidFill = dml.NewCT_SolidColorFillProperties()
-	tcStyle.Fill.SolidFill.SrgbClr = dml.NewCT_SRgbColor()
-	tcStyle.Fill.SolidFill.SrgbClr.ValAttr = "FF9900"
+	tcStyle.ThemeableFillStyleChoice.Fill = dml.NewCT_FillProperties()
+	tcStyle.ThemeableFillStyleChoice.Fill.FillPropertiesChoice.SolidFill = dml.NewCT_SolidColorFillProperties()
+	tcStyle.ThemeableFillStyleChoice.Fill.FillPropertiesChoice.SolidFill.SrgbClr = dml.NewCT_SRgbColor()
+	tcStyle.ThemeableFillStyleChoice.Fill.FillPropertiesChoice.SolidFill.SrgbClr.ValAttr = "FF9900"
 	style.WholeTbl.TcStyle = tcStyle
 	tbl.SetStyle(style)
 

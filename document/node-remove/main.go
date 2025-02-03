@@ -5,11 +5,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/unidoc/unioffice/document"
 	"log"
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/document"
 )
 
 func init() {

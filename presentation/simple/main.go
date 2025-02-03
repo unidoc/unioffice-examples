@@ -5,12 +5,12 @@ import (
 	"log"
 	"os"
 
-	"github.com/unidoc/unioffice/color"
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/measurement"
-	"github.com/unidoc/unioffice/schema/soo/dml"
+	"github.com/unidoc/unioffice/v2/color"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/measurement"
+	"github.com/unidoc/unioffice/v2/schema/soo/dml"
 
-	"github.com/unidoc/unioffice/presentation"
+	"github.com/unidoc/unioffice/v2/presentation"
 )
 
 func init() {

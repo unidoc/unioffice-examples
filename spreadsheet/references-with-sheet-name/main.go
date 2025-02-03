@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/spreadsheet/reference"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/spreadsheet/reference"
 )
 
 func init() {

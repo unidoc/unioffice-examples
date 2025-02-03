@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/measurement"
-	"github.com/unidoc/unioffice/presentation"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/measurement"
+	"github.com/unidoc/unioffice/v2/presentation"
 )
 
 func init() {
@@ -33,15 +33,15 @@ func main() {
 	for _, tb := range tbs {
 		for _, p := range tb.X().TxBody.P {
 			for _, tr := range p.EG_TextRun {
-				fmt.Println(tr.R.T)
+				fmt.Println(tr.TextRunChoice.R.T)
 			}
 		}
 	}
 
 	// Editing the existing text box
-	tb := tbs[0]                              // taking first of them
-	run := tb.X().TxBody.P[0].EG_TextRun[0].R // taking the first run of the first paragraph
-	run.T = "Edited TextBox text"             // changing the text of the run
+	tb := tbs[0]                                            // taking first of them
+	run := tb.X().TxBody.P[0].EG_TextRun[0].TextRunChoice.R // taking the first run of the first paragraph
+	run.T = "Edited TextBox text"                           // changing the text of the run
 
 	// creating a new text box
 	newTb := slide.AddTextBox()
