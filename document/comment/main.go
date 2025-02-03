@@ -9,9 +9,9 @@ package main
 import (
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/document"
-	"github.com/unidoc/unioffice/measurement"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/document"
+	"github.com/unidoc/unioffice/v2/measurement"
 )
 
 func init() {
