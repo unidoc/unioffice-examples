@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/presentation"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/presentation"
 )
 
 func init() {
@@ -40,8 +40,8 @@ func main() {
 			if runProps.SzAttr != nil {
 				fmt.Println("Font size:", *runProps.SzAttr/100)
 			}
-			if runProps.SolidFill != nil && runProps.SolidFill.SchemeClr != nil {
-				fmt.Println("SolidFill:", runProps.SolidFill.SchemeClr.ValAttr)
+			if runProps.FillPropertiesChoice.SolidFill != nil && runProps.FillPropertiesChoice.SolidFill.SchemeClr != nil {
+				fmt.Println("SolidFill:", runProps.FillPropertiesChoice.SolidFill.SchemeClr.ValAttr)
 			}
 			if tblInfo := item.TableInfo; tblInfo != nil {
 				fmt.Println("Row:", tblInfo.RowIndex)

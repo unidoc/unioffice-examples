@@ -10,17 +10,18 @@ import (
 	"os"
 
 	"github.com/disintegration/imaging"
+
 	"github.com/unidoc/unichart"
 	"github.com/unidoc/unichart/dataset"
-	"github.com/unidoc/unioffice/common/license"
 	unipdflicense "github.com/unidoc/unipdf/v3/common/license"
 	"github.com/unidoc/unipdf/v3/creator"
 	"github.com/unidoc/unipdf/v3/model"
 	"github.com/unidoc/unipdf/v3/render"
 
-	"github.com/unidoc/unioffice/common"
-	"github.com/unidoc/unioffice/measurement"
-	"github.com/unidoc/unioffice/presentation"
+	"github.com/unidoc/unioffice/v2/common"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/measurement"
+	"github.com/unidoc/unioffice/v2/presentation"
 )
 
 func init() {

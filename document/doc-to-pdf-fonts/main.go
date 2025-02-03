@@ -12,9 +12,9 @@ import (
 	unipdflicense "github.com/unidoc/unipdf/v3/common/license"
 	"github.com/unidoc/unipdf/v3/model"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/document"
-	"github.com/unidoc/unioffice/document/convert"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/document"
+	"github.com/unidoc/unioffice/v2/document/convert"
 )
 
 func init() {

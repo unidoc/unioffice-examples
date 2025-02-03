@@ -9,10 +9,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/document"
-	"github.com/unidoc/unioffice/schema/soo/ofc/sharedTypes"
-	"github.com/unidoc/unioffice/schema/soo/wml"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/document"
+	"github.com/unidoc/unioffice/v2/schema/soo/ofc/sharedTypes"
+	"github.com/unidoc/unioffice/v2/schema/soo/wml"
 )
 
 func init() {

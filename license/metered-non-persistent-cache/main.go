@@ -11,7 +11,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/unidoc/unioffice/common/license"
+	"github.com/unidoc/unioffice/v2/common/license"
 )
 
 func init() {

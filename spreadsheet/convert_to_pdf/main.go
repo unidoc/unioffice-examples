@@ -1,5 +1,6 @@
 // Copyright 2017 FoxyUtils ehf. All rights reserved.
 package main
+
 // This example demonstrates converting a workbook to a PDF file.
 
 import (
@@ -7,9 +8,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/spreadsheet"
-	"github.com/unidoc/unioffice/spreadsheet/convert"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/spreadsheet"
+	"github.com/unidoc/unioffice/v2/spreadsheet/convert"
 	pdflicense "github.com/unidoc/unipdf/v3/common/license"
 )
 

@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/unidoc/unioffice/chart"
-	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/spreadsheet"
+	"github.com/unidoc/unioffice/v2/chart"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/spreadsheet"
 )
 
 func init() {
