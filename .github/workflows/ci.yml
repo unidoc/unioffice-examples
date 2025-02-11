@@ -45,8 +45,8 @@ jobs:
           $HOME/dotnet/dotnet build --configuration Release
           cd $REPO
           ./.ci/build-examples.sh
-          cd $REPO
-          ./.ci/validate-examples.sh
+          cd $REPO/.ci
+          ./validate-examples.sh
           if [ $? -ne 0 ]
               then exit 1
           fi
