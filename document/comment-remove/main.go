@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 
 	"github.com/unidoc/unioffice/v2/common/license"
 	"github.com/unidoc/unioffice/v2/document"
@@ -26,18 +25,7 @@ func init() {
 }
 
 func main() {
-	if len(os.Args) < 3 {
-		fmt.Printf("Syntax: go run main.go input.docx comment_id\n")
-		os.Exit(1)
-	}
-
-	inputPath := os.Args[1]
-	commentId, err := strconv.Atoi(os.Args[2])
-	if err != nil {
-		log.Fatalf("error parsing comment id: %s", err)
-	}
-
-	doc, err := document.Open(inputPath)
+	doc, err := document.Open("sample.docx")
 	if err != nil {
 		log.Fatalf("error opening document: %s", err)
 	}
@@ -45,7 +33,7 @@ func main() {
 
 	listComments(doc)
 
-	if sucess := doc.RemoveComment(int64(commentId)); !sucess {
+	if ok := doc.RemoveComment(int64(2)); !ok {
 		fmt.Println("Failed removing comment")
 
 		return
