@@ -1,3 +1,4 @@
+// Copyright 2017 FoxyUtils ehf. All rights reserved.
 package main
 
 import (
@@ -5,12 +6,22 @@ import (
 	"os"
 	"time"
 
-	"github.com/unidoc/unioffice/common"
-	"github.com/unidoc/unioffice/schema/soo/dml"
-	"github.com/unidoc/unioffice/schema/soo/pml"
+	"github.com/unidoc/unioffice/v2/common"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/schema/soo/dml"
+	"github.com/unidoc/unioffice/v2/schema/soo/pml"
 
-	"github.com/unidoc/unioffice/presentation"
+	"github.com/unidoc/unioffice/v2/presentation"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	startTime := time.Now()
@@ -73,10 +84,10 @@ func main() {
 	}
 
 	spPr := dml.NewCT_ShapeProperties()
-	spPr.BlipFill = dml.NewCT_BlipFillProperties()
-	spPr.BlipFill.Blip = dml.NewCT_Blip()
-	spPr.BlipFill.Blip.EmbedAttr = &imageRelID
-	spPr.BlipFill.Stretch = dml.NewCT_StretchInfoProperties() // stretch to parent block with default values
+	spPr.FillPropertiesChoice.BlipFill = dml.NewCT_BlipFillProperties()
+	spPr.FillPropertiesChoice.BlipFill.Blip = dml.NewCT_Blip()
+	spPr.FillPropertiesChoice.BlipFill.Blip.EmbedAttr = &imageRelID
+	spPr.FillPropertiesChoice.BlipFill.FillModePropertiesChoice.Stretch = dml.NewCT_StretchInfoProperties() // stretch to parent block with default values
 
 	pic.X().SpPr = spPr
 

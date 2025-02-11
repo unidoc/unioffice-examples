@@ -1,14 +1,26 @@
+// Copyright 2017 FoxyUtils ehf. All rights reserved.
 package main
 
 import (
 	"fmt"
 	"log"
+	"os"
 
-	"github.com/unidoc/unioffice/color"
-	"github.com/unidoc/unioffice/schema/soo/pml"
+	"github.com/unidoc/unioffice/v2/color"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/schema/soo/pml"
 
-	"github.com/unidoc/unioffice/presentation"
+	"github.com/unidoc/unioffice/v2/presentation"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	ppt, err := presentation.OpenTemplate("template.pptx")
@@ -34,7 +46,7 @@ func main() {
 	}
 
 	ph, _ := sld.GetPlaceholder(pml.ST_PlaceholderTypeTitle)
-	ph.SetText("Using gooxml")
+	ph.SetText("Using unioffice")
 	ph, _ = sld.GetPlaceholder(pml.ST_PlaceholderTypeBody)
 	ph.SetText("Created with github.com/unidoc/unioffice/")
 

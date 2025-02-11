@@ -4,10 +4,21 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
-	"github.com/unidoc/unioffice/color"
-	"github.com/unidoc/unioffice/spreadsheet"
+	"github.com/unidoc/unioffice/v2/color"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/spreadsheet"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	ss := spreadsheet.New()
@@ -21,7 +32,7 @@ func main() {
 		// and cells
 		for c := 0; c < 5; c++ {
 			cell := row.AddCell()
-			//cell.SetString(fmt.Sprintf("row %d cell %d", r, c))
+			// cell.SetString(fmt.Sprintf("row %d cell %d", r, c))
 			rt := cell.SetRichTextString()
 			run := rt.AddRun()
 			run.SetText(fmt.Sprintf("row %d ", r))

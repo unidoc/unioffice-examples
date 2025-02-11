@@ -3,14 +3,25 @@ package main
 
 import (
 	"log"
+	"os"
 
-	"github.com/unidoc/unioffice/schema/soo/dml"
+	"github.com/unidoc/unioffice/v2/schema/soo/dml"
 
-	"github.com/unidoc/unioffice/color"
-	"github.com/unidoc/unioffice/common"
-	"github.com/unidoc/unioffice/measurement"
-	"github.com/unidoc/unioffice/presentation"
+	"github.com/unidoc/unioffice/v2/color"
+	"github.com/unidoc/unioffice/v2/common"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/measurement"
+	"github.com/unidoc/unioffice/v2/presentation"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 const lorem = "Lorem ipsum dolor sit amet."
 

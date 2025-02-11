@@ -6,9 +6,20 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
-	"github.com/unidoc/unioffice/spreadsheet"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/spreadsheet"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	ss, err := spreadsheet.Open("test.xlsx")

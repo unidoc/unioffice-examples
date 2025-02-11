@@ -5,10 +5,21 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
-	"github.com/unidoc/unioffice/document"
+	"github.com/unidoc/unioffice/v2/common/license"
+	"github.com/unidoc/unioffice/v2/document"
 )
+
+func init() {
+	// Make sure to load your metered License API key prior to using the library.
+	// If you need a key, you can sign up and create a free one at https://cloud.unidoc.io
+	err := license.SetMeteredKey(os.Getenv(`UNIDOC_LICENSE_API_KEY`))
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	doc, err := document.Open("document.docx")
@@ -20,15 +31,15 @@ func main() {
 	cp := doc.GetOrCreateCustomProperties()
 
 	// You can read properties from the document
-	fmt.Println("AppVersion", *cp.GetPropertyByName("AppVersion").X().Lpwstr)
-	fmt.Println("Company", *cp.GetPropertyByName("Company").X().Lpwstr)
-	fmt.Println("DocSecurity", *cp.GetPropertyByName("DocSecurity").X().I4)
-	fmt.Println("LinksUpToDate", *cp.GetPropertyByName("LinksUpToDate").X().Bool)
+	fmt.Println("AppVersion", *cp.GetPropertyByName("AppVersion").X().PropertyChoice.Lpwstr)
+	fmt.Println("Company", *cp.GetPropertyByName("Company").X().PropertyChoice.Lpwstr)
+	fmt.Println("DocSecurity", *cp.GetPropertyByName("DocSecurity").X().PropertyChoice.I4)
+	fmt.Println("LinksUpToDate", *cp.GetPropertyByName("LinksUpToDate").X().PropertyChoice.Bool)
 	fmt.Println("Non-existent", cp.GetPropertyByName("nonexistentproperty"))
 
 	// And change them as well
 	cp.SetPropertyAsLpwstr("Company", "Another company") // text, existing property
-	fmt.Println("Company", *cp.GetPropertyByName("Company").X().Lpwstr)
+	fmt.Println("Company", *cp.GetPropertyByName("Company").X().PropertyChoice.Lpwstr)
 
 	// Adding new properties
 	cp.SetPropertyAsLpwstr("Another text property", "My text value") // text
