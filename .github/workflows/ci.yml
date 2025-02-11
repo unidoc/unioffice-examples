@@ -43,8 +43,8 @@ jobs:
           ls -la
           cd $REPO/.ci/openxml-validator
           $HOME/dotnet/dotnet build --configuration Release
-          cd $REPO
-          ./build_examples.sh
+          cd $REPO/.ci
+          ./build-examples.sh
           cd $REPO/.ci
           ./validate-examples.sh
           if [ $? -ne 0 ]
