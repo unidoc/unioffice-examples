@@ -1,4 +1,4 @@
-name: UniOffice CI
+name: UniOffice Examples CI
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
           wget https://download.visualstudio.microsoft.com/download/pr/4e3b04aa-c015-4e06-a42e-05f9f3c54ed2/74d1bb68e330eea13ecfc47f7cf9aeb7/dotnet-sdk-8.0.404-linux-x64.tar.gz
           tar -xf dotnet-sdk-8.0.404-linux-x64.tar.gz
 
-      - name: test
+      - name: Test and validate examples
         run: |
           export REPO=$PWD
           cd $REPO/.ci
