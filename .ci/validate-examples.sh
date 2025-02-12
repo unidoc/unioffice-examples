@@ -1,6 +1,6 @@
 #!/bin/bash
 :> errors
-output=$(find .. -maxdepth 1 -mindepth 1 -not -path '*/\.*' -type d ! -name "metered" ! -name "offline" ! -name "metered-non-persistent-cache" ! -name "usage-logs" -print0 | xargs -0 -I{} sh -c "cd {}; echo running {}; ./main")
+output=$(find .. -maxdepth 2 -mindepth 2 -not -path '*/\.*' -type d  ! -name "metered" ! -name "offline" ! -name "metered-non-persistent-cache" ! -name "usage-logs" -print0 | xargs -0 -I{} sh -c "cd {}; echo running {}; ./main")
 if [ $? -ne 0 ]; then
     echo $output >> errors
 fi
