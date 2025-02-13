@@ -33,9 +33,10 @@ func main() {
 
 	listComments(doc)
 
-	if ok := doc.RemoveComment(int64(2)); !ok {
-		fmt.Println("Failed removing comment")
+	commentId := int64(2)
 
+	if ok := doc.RemoveComment(commentId); !ok {
+		fmt.Println("Failed removing comment")
 		return
 	}
 
