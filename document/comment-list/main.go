@@ -25,14 +25,7 @@ func init() {
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Printf("Syntax: go run main.go input.docx\n")
-		os.Exit(1)
-	}
-
-	inputPath := os.Args[1]
-
-	doc, err := document.Open(inputPath)
+	doc, err := document.Open("sample.docx")
 	if err != nil {
 		log.Fatalf("error opening document: %s", err)
 	}

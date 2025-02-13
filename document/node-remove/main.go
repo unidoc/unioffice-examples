@@ -4,7 +4,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -20,16 +19,7 @@ func init() {
 }
 
 func main() {
-	args := os.Args
-	if len(args) < 2 {
-		fmt.Printf("Usage %s go run main.go input.docx output.docx", os.Args[0])
-		return
-	}
-
-	inputPath := args[1]
-	outputPath := args[2]
-
-	doc, err := document.Open(inputPath)
+	doc, err := document.Open("sample.docx")
 	if err != nil {
 		log.Fatalf("error opening document: %s", err)
 	}
@@ -46,7 +36,7 @@ func main() {
 		}
 	}
 
-	err = doc.SaveToFile(outputPath)
+	err = doc.SaveToFile("output.docx")
 	if err != nil {
 		panic(err)
 	}
