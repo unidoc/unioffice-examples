@@ -43,7 +43,7 @@ func main() {
 	}
 
 	// move inserted slide to the very beginning of presentation, it becomes slide 0
-	err = pptTo.MoveSlide(4, 0)
+	err = pptTo.MoveSlide(len(pptTo.Slides())-1, 1)
 	if err != nil {
 		fmt.Println("error moving slide ", err)
 		os.Exit(1)

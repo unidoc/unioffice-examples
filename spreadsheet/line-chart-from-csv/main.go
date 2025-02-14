@@ -23,16 +23,7 @@ func init() {
 }
 
 func main() {
-	args := os.Args
-	if len(args) < 2 {
-		fmt.Printf("Usage %s go run main.go input.csv output.xlsx", os.Args[0])
-		return
-	}
-
-	inputPath := args[1]
-	outputPath := args[2]
-
-	sliceData, err := readCsv(inputPath)
+	sliceData, err := readCsv("example-data.csv")
 	if err != nil {
 		log.Fatalf("error reading csv: %s", err)
 	}
@@ -99,7 +90,7 @@ func main() {
 		log.Fatalf("error validating sheet: %s", err)
 	}
 
-	if err := ss.SaveToFile(outputPath); err != nil {
+	if err := ss.SaveToFile("output.xlsx"); err != nil {
 		log.Fatalf("error saving: %s", err)
 	}
 }

@@ -41,6 +41,23 @@ Anyone can get a free metered API key by signing up on http://cloud.unidoc.io/
 - [license/metered/main.go](license/metered/main.go) Demonstrates how to load the Metered API license key and how to print out relevant information.
 - [license/metered-non-persistent-cache/main.go](license/metered-non-persistent-cache/main.go) Demonstrates how to load the Metered API license key for instances that not having persistent storage for usages cache and print out relevant information. When working with short-lived containers like docker or kubernetes instances usually it's doesn't have persistent storage location and will be destroyed after being idle.
 - [license/offline/main.go](license/offline/main.go) Demonstrates how to print out information about the license after loading an offline license key.
+- [license/usage-logs/main.go](license/usage-logs/main.go) This example shows how to display license usage logs for read and editing simple docx file.
+
+### Metered License Key Usage Logs
+When using unioffice on metered api key it is possible to see the usage logs of license key in every run. To enable this set the `license.SetMeteredKeyUsageLogVerboseMode` to `true` and to print out into console set the `logger.SetLogger` to Info or higher. as follows. This is available for metered api key only.
+
+```go
+// Set the log level to info or higher
+logger.SetLogger(logger.NewConsoleLogger(logger.LogLevelInfo))
+
+// Enable the verbose mode logging
+license.SetMeteredKeyUsageLogVerboseMode(true)
+```
+Sample output
+```bash
+[INFO]  metered.go:674 2024-09-26 20:32:22.607531 +0300 +03 m=+0.412134293 | File grocery_list.docx | Ref: dr17f8db | document.Read | 1 credit(s) used
+[INFO]  metered.go:506 2024-09-26 20:32:22.653044 +0300 +03 m=+0.457648876 Ref: dr17f8db | document:d.Save | No credit used
+```
 
 ### Build all examples
 

@@ -1,0 +1,52 @@
+name: UniOffice Examples CI
+
+on:
+  push:
+    branches: [ master, development ]
+  pull_request:
+    branches: [ master, development ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        go-version: [ '1.23', '1.22', '1.21', '1.20', '1.19' ]
+
+    env:
+      CGO_ENABLED: 0
+      GITHUB_REF: ${{ github.ref }}
+      UNIDOC_LICENSE_API_KEY: ${{ secrets.UNIDOC_LICENSE_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Golang ${{ matrix.go-version }}
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Fetch dotnet
+        run: |
+          mkdir -p $HOME/dotnet
+          cd $HOME/dotnet
+          wget https://download.visualstudio.microsoft.com/download/pr/4e3b04aa-c015-4e06-a42e-05f9f3c54ed2/74d1bb68e330eea13ecfc47f7cf9aeb7/dotnet-sdk-8.0.404-linux-x64.tar.gz
+          tar -xf dotnet-sdk-8.0.404-linux-x64.tar.gz
+
+      - name: Test and validate examples
+        run: |
+          export REPO=$PWD
+          cd $REPO/.ci
+          ls -la
+          unzip validator.zip
+          ls -la
+          cd $REPO/.ci/openxml-validator
+          $HOME/dotnet/dotnet build --configuration Release
+          cd $REPO
+          ./.ci/build-examples.sh
+          cd $REPO/.ci
+          ./validate-examples.sh
+          if [ $? -ne 0 ]
+              then exit 1
+          fi
