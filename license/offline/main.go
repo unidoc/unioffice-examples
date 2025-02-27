@@ -1,6 +1,6 @@
 /*
  * license/offline/main.go:
- * Illustrates how to load an offline (perpetual) license key.
+ * Illustrates how to load an offline license key.
  * Offline keys can be purchased at https://www.unidoc.io
  *
  * Run as: go run main.go
@@ -14,7 +14,7 @@ import (
 	"github.com/unidoc/unioffice/v2/common/license"
 )
 
-// Example of an offline perpetual license key.
+// Example of an offline license key.
 const offlineLicenseKey = `
 -----BEGIN UNIDOC LICENSE KEY-----
 contents here.
