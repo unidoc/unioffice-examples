@@ -5,9 +5,9 @@ go 1.20
 require (
 	github.com/disintegration/imaging v1.6.2
 	github.com/go-ole/go-ole v1.3.0
-	github.com/unidoc/unichart v0.3.0
-	github.com/unidoc/unioffice/v2 v2.1.0
-	github.com/unidoc/unipdf/v3 v3.67.0
+	github.com/unidoc/unichart v0.4.0
+	github.com/unidoc/unioffice/v2 v2.2.0
+	github.com/unidoc/unipdf/v3 v3.68.0
 )
 
 require (

@@ -26,7 +26,7 @@ func main() {
 	defer doc.Close()
 
 	for i := 0; i < 7; i++ {
-		img, err := common.ImageFromFile("gopher.png")
+		img, err := common.ImageFromFile("gophercolor.png")
 		if err != nil {
 			log.Fatalf("unable to create image: %s", err)
 		}
