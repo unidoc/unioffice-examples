@@ -13,10 +13,10 @@ import (
 
 	"github.com/unidoc/unichart"
 	"github.com/unidoc/unichart/dataset"
-	unipdflicense "github.com/unidoc/unipdf/v3/common/license"
-	"github.com/unidoc/unipdf/v3/creator"
-	"github.com/unidoc/unipdf/v3/model"
-	"github.com/unidoc/unipdf/v3/render"
+	unipdflicense "github.com/unidoc/unipdf/v4/common/license"
+	"github.com/unidoc/unipdf/v4/creator"
+	"github.com/unidoc/unipdf/v4/model"
+	"github.com/unidoc/unipdf/v4/render"
 
 	"github.com/unidoc/unioffice/v2/common"
 	"github.com/unidoc/unioffice/v2/common/license"
