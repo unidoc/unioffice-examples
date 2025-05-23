@@ -11,7 +11,7 @@ import (
 	"github.com/unidoc/unioffice/v2/common/license"
 	"github.com/unidoc/unioffice/v2/spreadsheet"
 	"github.com/unidoc/unioffice/v2/spreadsheet/convert"
-	pdflicense "github.com/unidoc/unipdf/v3/common/license"
+	pdflicense "github.com/unidoc/unipdf/v4/common/license"
 )
 
 func init() {

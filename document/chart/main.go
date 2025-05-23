@@ -10,7 +10,7 @@ import (
 	"os"
 
 	"github.com/unidoc/unioffice/v2/common/license"
-	unipdflicense "github.com/unidoc/unipdf/v3/common/license"
+	unipdflicense "github.com/unidoc/unipdf/v4/common/license"
 
 	"github.com/disintegration/imaging"
 	"github.com/unidoc/unichart"
@@ -21,9 +21,9 @@ import (
 	"github.com/unidoc/unioffice/v2/measurement"
 	"github.com/unidoc/unioffice/v2/schema/soo/wml"
 
-	"github.com/unidoc/unipdf/v3/creator"
-	"github.com/unidoc/unipdf/v3/model"
-	"github.com/unidoc/unipdf/v3/render"
+	"github.com/unidoc/unipdf/v4/creator"
+	"github.com/unidoc/unipdf/v4/model"
+	"github.com/unidoc/unipdf/v4/render"
 )
 
 func init() {

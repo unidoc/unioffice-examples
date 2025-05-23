@@ -9,8 +9,8 @@ import (
 	"log"
 	"os"
 
-	unipdflicense "github.com/unidoc/unipdf/v3/common/license"
-	"github.com/unidoc/unipdf/v3/model"
+	unipdflicense "github.com/unidoc/unipdf/v4/common/license"
+	"github.com/unidoc/unipdf/v4/model"
 
 	"github.com/unidoc/unioffice/v2/common/license"
 	"github.com/unidoc/unioffice/v2/document"

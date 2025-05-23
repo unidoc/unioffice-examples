@@ -6,8 +6,8 @@ require (
 	github.com/disintegration/imaging v1.6.2
 	github.com/go-ole/go-ole v1.3.0
 	github.com/unidoc/unichart v0.4.0
-	github.com/unidoc/unioffice/v2 v2.2.0
-	github.com/unidoc/unipdf/v3 v3.68.0
+	github.com/unidoc/unioffice/v2 v2.3.0
+	github.com/unidoc/unipdf/v4 v4.0.0
 )
 
 require (
