@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -92,6 +91,6 @@ func main() {
 
 	// Save the file
 	if err := doc.SaveToFile("combined-header-footer.docx"); err != nil {
-		fmt.Println(err)
+		log.Fatalf("Failed to write file %s", err)
 	}
 }
