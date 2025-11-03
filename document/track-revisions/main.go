@@ -31,11 +31,12 @@ func main() {
 	pr := p.AddRun()
 	pr.AddText("This is some paragraph text.")
 
-	currentTime := time.Now
+	currentTime := time.Now()
 	author := "Author 1"
 	revisionNumber := "002773B1"
 
-	pr.AddInsertedText("Some inserted text is here.", revisionNumber, author, currentTime, 0)
+	// Add insertion to current paragraph.
+	p.AddInsertedText("Some inserted text is here.", revisionNumber, author, currentTime, 0)
 
 	p = doc.AddParagraph()
 	p.SetAfterSpacing(measurement.Point * 12)
@@ -43,11 +44,12 @@ func main() {
 	pr = p.AddRun()
 	pr.AddText("This is more paragraph text.")
 
-	currentTime = time.Now
+	currentTime = time.Now()
 	author = "Author 2"
 	revisionNumber = ""
 
-	pr.AddDeletedText("Some deleted text is there.", revisionNumber, author, currentTime, 1)
+	// Add deletion to current paragraph.
+	p.AddDeletedText("Some deleted text is there.", revisionNumber, author, currentTime, 1)
 
 	doc.SaveToFile("insertions_deletions.docx")
 }
