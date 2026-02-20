@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"image"
+	"image/draw"
 	"image/png"
 	"log"
 	"os"
@@ -12,7 +13,6 @@ import (
 	"github.com/unidoc/unioffice/v2/common/license"
 	unipdflicense "github.com/unidoc/unipdf/v4/common/license"
 
-	"github.com/disintegration/imaging"
 	"github.com/unidoc/unichart"
 	"github.com/unidoc/unichart/dataset"
 
@@ -140,7 +140,13 @@ func renderPDFToImage(filename string) {
 
 func cropImage(imagePath string) {
 	// Open the input image
-	img, err := imaging.Open(imagePath)
+	inFile, err := os.Open(imagePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer inFile.Close()
+
+	img, err := png.Decode(inFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -149,7 +155,15 @@ func cropImage(imagePath string) {
 	boundingBox := findBoundingBox(img)
 
 	// Crop the image using the bounding box
-	croppedImg := imaging.Crop(img, boundingBox)
+	// Ensure the crop rectangle is within the image bounds
+	bounds := img.Bounds()
+	crop := boundingBox.Intersect(bounds)
+
+	// Create a new image with the cropped dimensions
+	croppedImg := image.NewRGBA(image.Rect(0, 0, crop.Dx(), crop.Dy()))
+
+	// Copy the pixels from the original image to the cropped image
+	draw.Draw(croppedImg, croppedImg.Bounds(), img, crop.Min, draw.Src)
 
 	// Save the cropped image
 	outFile, err := os.Create(imagePath)

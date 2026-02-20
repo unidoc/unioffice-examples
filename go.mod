@@ -3,11 +3,10 @@ module github.com/unidoc/unioffice-examples
 go 1.23.0
 
 require (
-	github.com/disintegration/imaging v1.6.2
 	github.com/go-ole/go-ole v1.3.0
-	github.com/unidoc/unichart v0.5.1
-	github.com/unidoc/unioffice/v2 v2.6.0
-	github.com/unidoc/unipdf/v4 v4.3.0
+	github.com/unidoc/unichart v0.5.2
+	github.com/unidoc/unioffice/v2 v2.8.0
+	github.com/unidoc/unipdf/v4 v4.7.0
 )
 
 require (
@@ -23,11 +22,12 @@ require (
 	github.com/richardlehane/msoleps v1.0.4 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
-	github.com/unidoc/emf v0.1.0 // indirect
+	github.com/unidoc/emf v0.2.0 // indirect
 	github.com/unidoc/freetype v0.2.3 // indirect
 	github.com/unidoc/garabic v0.0.0-20220702200334-8c7cb25baa11 // indirect
 	github.com/unidoc/pkcs7 v0.3.0 // indirect
 	github.com/unidoc/timestamp v0.0.0-20200412005513-91597fd3793a // indirect
+	github.com/unidoc/typesetting v0.1.0 // indirect
 	github.com/unidoc/unitype v0.5.1 // indirect
 	golang.org/x/crypto v0.41.0 // indirect
 	golang.org/x/image v0.30.0 // indirect
