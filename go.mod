@@ -1,12 +1,12 @@
 module github.com/unidoc/unioffice-examples
 
-go 1.24.0
+go 1.25.0
 
 require (
 	github.com/go-ole/go-ole v1.3.0
 	github.com/unidoc/unichart v0.5.2
-	github.com/unidoc/unioffice/v2 v2.13.0
-	github.com/unidoc/unipdf/v5 v5.0.0
+	github.com/unidoc/unioffice/v2 v2.14.0
+	github.com/unidoc/unipdf/v5 v5.1.0
 )
 
 require (
