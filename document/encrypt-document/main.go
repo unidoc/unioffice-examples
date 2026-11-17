@@ -1,7 +1,15 @@
+/*
+ * Copyright 2026 FoxyUtils ehf. All rights reserved.
+ *
+ * This example demonstrates saving a DOCX encrypted with a password, choosing
+ * the AES key size, and opening the encrypted file again with the password.
+ */
+
 package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/unidoc/unioffice/v2/common/license"
@@ -30,30 +38,36 @@ func main() {
 		Encryption: crypto.EncryptionAES256,
 	}
 	if err := doc.SaveToFileWithOptions("encrypted.docx", opts); err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
 
-	// Weaker keys for compatibility. All are agile encryption and open in
-	// Office 2010 and later.
-	for name, alg := range map[string]crypto.EncryptionAlgorithm{
-		"aes128": crypto.EncryptionAES128,
-		"aes192": crypto.EncryptionAES192,
+	// AES-128 and AES-192 are available for policies or readers that require
+	// a specific key size.
+	for _, c := range []struct {
+		name string
+		alg  crypto.EncryptionAlgorithm
+	}{
+		{"aes128", crypto.EncryptionAES128},
+		{"aes192", crypto.EncryptionAES192},
 	} {
 		d := document.New()
-		d.AddParagraph().AddRun().AddText("Encrypted with " + name + ".")
-		if err := d.SaveToFileWithOptions("encrypted-"+name+".docx", &crypto.SaveOptions{Password: "unioffice", Encryption: alg}); err != nil {
-			fmt.Println(err)
-		}
+		d.AddParagraph().AddRun().AddText("Encrypted with " + c.name + ".")
+		err := d.SaveToFileWithOptions("encrypted-"+c.name+".docx", &crypto.SaveOptions{Password: "unioffice", Encryption: c.alg})
 		d.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	// Read an encrypted document back with the password.
 	got, err := document.OpenWithOptions("encrypted.docx", &crypto.OpenOptions{Password: "unioffice"})
 	if err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
 	defer got.Close()
-	fmt.Println("opened encrypted document")
+	for _, p := range got.Paragraphs() {
+		for _, r := range p.Runs() {
+			fmt.Println("text:", r.Text())
+		}
+	}
 }

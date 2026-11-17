@@ -1,8 +1,17 @@
+/*
+ * Copyright 2026 FoxyUtils ehf. All rights reserved.
+ *
+ * This example demonstrates opening an encrypted DOCX: the errors returned
+ * without a password and with a wrong one, opening it with the right password,
+ * and saving an unencrypted copy.
+ */
+
 package main
 
 import (
 	"errors"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/unidoc/unioffice/v2"
@@ -22,25 +31,34 @@ func init() {
 
 func main() {
 	if err := createEncrypted("encrypted.docx", "unioffice"); err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
 
 	// document.Open cannot read an encrypted file and says so.
-	if _, err := document.Open("encrypted.docx"); errors.Is(err, unioffice.ErrEncryptedDocument) {
+	_, err := document.Open("encrypted.docx")
+	switch {
+	case errors.Is(err, unioffice.ErrEncryptedDocument):
 		fmt.Println("document.Open:", err)
+	case err != nil:
+		log.Fatal(err)
+	default:
+		log.Fatal("expected an encrypted-document error")
 	}
 
 	// A wrong password is reported separately from other read errors.
-	_, err := document.OpenWithOptions("encrypted.docx", &crypto.OpenOptions{Password: "wrong"})
-	if errors.Is(err, unioffice.ErrIncorrectPassword) {
+	_, err = document.OpenWithOptions("encrypted.docx", &crypto.OpenOptions{Password: "wrong"})
+	switch {
+	case errors.Is(err, unioffice.ErrIncorrectPassword):
 		fmt.Println("wrong password:", err)
+	case err != nil:
+		log.Fatal(err)
+	default:
+		log.Fatal("expected an incorrect-password error")
 	}
 
 	doc, err := document.OpenWithOptions("encrypted.docx", &crypto.OpenOptions{Password: "unioffice"})
 	if err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
 	defer doc.Close()
 	for _, p := range doc.Paragraphs() {
@@ -51,10 +69,8 @@ func main() {
 
 	// Saving without options writes an ordinary, unencrypted copy.
 	if err := doc.SaveToFile("decrypted.docx"); err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
-	fmt.Println("saved decrypted.docx")
 }
 
 func createEncrypted(path, password string) error {
